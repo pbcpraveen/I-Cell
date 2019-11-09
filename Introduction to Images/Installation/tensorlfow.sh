@@ -1,9 +1,0 @@
-conda install -c anaconda numpy 
-conda install -c anaconda pandas 
-conda install -c conda-forge opencv 
-conda install -c conda-forge theano 
-conda install -c conda-forge tensorflow 
-conda install -c conda-forge keras
-conda install -c anaconda pillow
-python3 -m pip install ipykernel
-python3 -m ipykernel install --user
