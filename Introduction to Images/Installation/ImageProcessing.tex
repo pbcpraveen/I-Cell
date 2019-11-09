@@ -1,4 +1,4 @@
-% Created 2019-09-07 Sat 14:31
+% Created 2019-11-09 Sat 23:07
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -134,7 +134,7 @@ sudo -H pip3 install --upgrade pip
 \end{verbatim}
 \subsection*{conda}
 \label{sec-6-3}
-To install conda download the conda bash .sh file from [[\url{https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh}]].  
+To install conda download the conda bash .sh file from [[\url{http://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh}]]
 Once the download is complete go to the directory where the extracted .sh file is present  
 and run the following command.  
 \begin{verbatim}
@@ -148,6 +148,8 @@ installed using each of these tools.
 
 \subsection*{Dependency packages}
 \label{sec-6-4}
+You can download this \href{https://github.com/pbcpraveen/I-Cell/blob/master/Introduction\%20to\%20Images/Installation/tensorlfow.sh}{bashscripts} that contains all commands for the installation.
+You can directly execute this file after changing the permissions of the file.
 The program requires the following packages for execution  
 \begin{verbatim}
 opencv
@@ -184,7 +186,10 @@ $ conda install -c conda-forge theano
 $ conda install -c conda-forge tensorflow 
 $ conda install -c conda-forge keras
 $ conda install -c anaconda pillow
+$ python3 -m pip install ipykernel
+$ python3 -m ipykernel install --user
 \end{verbatim}
+
 
 \textbf{\textbf{Note:}} If you are willing to install the tensorflow and keras for GPU, do it  
 only if you have good Graphical processing unit in you machine, because it is  

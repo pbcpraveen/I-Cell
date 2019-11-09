@@ -1,14 +1,37 @@
-#+TITLE: Image Processing
-#+AUTHOR: Praveen Kumar R
+% Created 2019-11-09 Sat 23:04
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{palatino}
+\usepackage[top=1in,bottom=1.25in,left=1.25in,right=1.25in]{geometry}
+\usepackage{setspace}
+\setcounter{secnumdepth}{1}
+\author{Praveen Kumar R}
+\date{\today}
+\title{Image Processing}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.2 (Org mode 8.2.10)}}
+\begin{document}
 
-
-#+LaTex_HEADER: \usepackage{palatino}
-#+LaTex_HEADER: \usepackage[top=1in,bottom=1.25in,left=1.25in,right=1.25in]{geometry}
-#+LaTex_HEADER: \usepackage{setspace}
-#+OPTIONS: toc:nil
-#+OPTIONS: num:1
-#+STARTUP: showeverything
-* Computer Vision
+\maketitle
+\section{Computer Vision}
+\label{sec-1}
 Computer Vision is the branch of Computer science that lays protocol for computer and    
 other machines to how to see the ouside world. Object detection, Rendering Segmented mask,    
 Pattern recognition, Image transfromation and preprocessring,etc., are some of the major   
@@ -16,41 +39,47 @@ goals of this branch of study. Recently CV has evolved to visualise more mathema
 complicated concepts like fuzzy logic, laplace transformation, Abstract Algebra, etc.,    
 thus giving these concepts a better scope of understanding.
 
-* What is an Image?
+\section{What is an Image?}
+\label{sec-2}
 An image in its fundementel level is conceptualised as a collection of meaningful pixels.   
 On the basis of how an image is constructed from it atomic stage, images can be classified   
 into many categories
-- RGB images
-- HSV images
-- CMYK images
-- HWB images
-- HEX images
+\begin{itemize}
+\item RGB images
+\item HSV images
+\item CMYK images
+\item HWB images
+\item HEX images
+\end{itemize}
 etc,.
 Each of these categories differ in syntax of how the color of each pixel is represented. A same image   
 represented in these different formats will differ in quality and color. This is because some   
 formats dosent give the liberty to choose many colors. RGB format is generally adapted   
 for any kind of image processing technique.   
 
-* RGB Image
+\section{RGB Image}
+\label{sec-3}
 Every pixel in a RGB image is defined by 3 values Red, Green, and Blue. Each of these values   
 uses 8 bit standard(IEEE) representation. 7 bits to represent value and the most significant bit   
 to represent sign. Thus each of the values for R,G and B will run from 0 t0 255. As the value of   
 ceratain channel reaches 0 the brightness of the color imparted by that channel tend to become low, meaning the channel will become deeper in color and eventually become black.
 Similarly as the value of a certain channel approches to 255 the color imparted by that channel    becomes
 more brighter. From the above statements one may arrive at the following hypothesis,   
-- (0,0,0) : will be black color
-- (255,255,255): will be white color
-- (255,0,0) : will be bright red color
-- (0,255,0) : will be bright green color
-- (0,0,255) : will be bright blue colors   
+\begin{itemize}
+\item (0,0,0) : will be black color
+\item (255,255,255): will be white color
+\item (255,0,0) : will be bright red color
+\item (0,255,0) : will be bright green color
+\item (0,0,255) : will be bright blue colors
+\end{itemize}
 the representation is based on the assumption that pixel representation is in RGB format.   
 By fundemental principle of counting the number of different colors that can be formed is   
 256 x 256 x 256 = 16,777,216    
-#+CAPTION: RGB image - The top layer shown is the actual image you see. But it actually represented using 3 different channels
-#+NAME:   fig1
-#+attr_html: :width 250px
-#+attr_latex: :width 250px
-[[./rgb.png]]
+\begin{figure}[htb]
+\centering
+\includegraphics[width=250px]{./rgb.png}
+\caption{\label{fig1}RGB image - The top layer shown is the actual image you see. But it actually represented using 3 different channels}
+\end{figure}
 
 Mathematically a 3 channel RGB image is modeled as a 4 dimensinol matrix. The inner most dimension   
 will provide information about the pixel value. The next dimension will be an vector of these pixels forming   
@@ -58,7 +87,8 @@ rows of the image channel matrix. These rows combine in next dimension verticall
 channels will combine to form a RGB image. In case of Grayscale image there will be only one channel, and each pixel   
 is defined by one single value ranging from 0 to 255(extremes inclusive).  
 
-* Installation
+\section{Installation}
+\label{sec-4}
 OpenCV is a open source community the keep constantly updating its libraries  
 based on input from programmers all around the world. OpenCV is available in two  
 different distribution Python and C++. Though the functionality of both the distribution  
@@ -66,55 +96,62 @@ are maintained to be the same, the syntax and the parameters differ in each of t
 distributions. In this guide you will be able to install the python distribution of opencv.  
 The commands in this installation steps were tried and tested in Ubuntu 18.04.  
 
-* Pre-requisite
+\section{Pre-requisite}
+\label{sec-5}
 It is recommended that the programmer uses a linux or unix based operating system like  
 Ubuntu, Kali, or MacOS. Standard distribution for python comes pre installed with  
 these opearting system. To check the version of python run the following command.  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 $ python --version
-#+END_EXAMPLE
+\end{verbatim}
 If python package is not found in your system install the package by running the  
 following commands.  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 $ sudo add-apt-repository ppa:jonathonf/python-3.6
 $ sudo apt-get update
 $ sudo apt-get install python3.6
-#+END_EXAMPLE
-*  Installation Steps
+\end{verbatim}
+\section{Installation Steps}
+\label{sec-6}
 To install addtional libraries for python you need either one of the installation tools  
-- pip
-- pip3 (recommended for python3)
-- conda
-** pip
+\begin{itemize}
+\item pip
+\item pip3 (recommended for python3)
+\item conda
+\end{itemize}
+\subsection*{pip}
+\label{sec-6-1}
 To install pip use the following command.
 
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 sudo apt-get install python3-pip
-#+END_EXAMPLE
-** pip3
+\end{verbatim}
+\subsection*{pip3}
+\label{sec-6-2}
 You can upgrade your pip to pip3 by running the following command.
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 sudo -H pip3 install --upgrade pip
-#+END_EXAMPLE
-** conda
-To install conda download the conda bash .sh file from [[[[http://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh]]]]
-#+LINK: here [[https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh]]
+\end{verbatim}
+\subsection*{conda}
+\label{sec-6-3}
+To install conda download the conda bash .sh file from
 Once the download is complete go to the directory where the extracted .sh file is present  
 and run the following command.  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 bash Anaconda3-2019.03-Linux-x86_64.sh
-#+END_EXAMPLE
-**NOTE:** The bash command will vary with name of the .sh script installed. So remember  
+\end{verbatim}
+\textbf{\textbf{NOTE:}} The bash command will vary with name of the .sh script installed. So remember  
  to give the correct file name in the command. \newline 
 
 I would recommend to install all these tools because some of the libraries are easily  
 installed using each of these tools.  
 
-** Dependency packages
-You can download this [[https://github.com/pbcpraveen/I-Cell/blob/master/Introduction%20to%20Images/Installation/tensorlfow.sh][bashscripts]] that contains all commands for the installation.
+\subsection*{Dependency packages}
+\label{sec-6-4}
+You can download this \href{https://github.com/pbcpraveen/I-Cell/blob/master/Introduction\%20to\%20Images/Installation/tensorlfow.sh}{bashscripts} that contains all commands for the installation.
 You can directly execute this file after changing the permissions of the file.
 The program requires the following packages for execution  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 opencv
 numpy
 pandas
@@ -122,26 +159,26 @@ theano
 tensorflow
 keras
 pillow
-#+END_EXAMPLE
+\end{verbatim}
 Before installing any of these libraries I would recommend you to create a new environment
 in your your conda to avoid libraries version clashes. To create a new environment run the following 
 command in your terminal.
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 conda create --name myenv
-#+END_EXAMPLE
+\end{verbatim}
 By running the above command you will create a new environment called 'myenv'. In most of the terminal
 the command prompt message is preceeded with the environment where you are currently in. The default conda 
 environment is called 'base' to move to another environment run the following command.
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 conda activate myenv
-#+END_EXAMPLE
+\end{verbatim}
 or 
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 source activate myenv
-#+END_EXAMPLE
+\end{verbatim}
 Once you land your newly created environment you are ready to install the packages. Run the following commands to install the
 packages mentioned above. Using conda is useful because conda will take care of the libraries verions to be installed.  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 $ conda install -c anaconda numpy 
 $ conda install -c anaconda pandas 
 $ conda install -c conda-forge opencv 
@@ -151,49 +188,53 @@ $ conda install -c conda-forge keras
 $ conda install -c anaconda pillow
 $ python3 -m pip install ipykernel
 $ python3 -m ipykernel install --user
-#+END_EXAMPLE
+\end{verbatim}
 
 
-**Note:** If you are willing to install the tensorflow and keras for GPU, do it  
+\textbf{\textbf{Note:}} If you are willing to install the tensorflow and keras for GPU, do it  
 only if you have good Graphical processing unit in you machine, because it is  
-tedious process. For GPU installation follow the instruction in the [[[[https://www.tensorflow.org/install/gpu]]]] 
-**GOOD LUCK**
+tedious process. For GPU installation follow the instruction in the [[\url{https://www.tensorflow.org/install/gpu}]] 
+\textbf{\textbf{GOOD LUCK}}
 \newpage
 
-* Introduction to OpenCV python3
-** Importing libraries
+\section{Introduction to OpenCV python3}
+\label{sec-7}
+\subsection*{Importing libraries}
+\label{sec-7-1}
 To start with import the necessary libraries for the for the programmer  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 import cv2
 import numpy
-#+END_EXAMPLE
+\end{verbatim}
 if any of the above import fails it means that you made mistake in you installation  
 process. Then go back to the previous section and reinstall all the libraries after  
 removing them.  
-** Reading images
+\subsection*{Reading images}
+\label{sec-7-2}
 To read a image and store it in a variable use the imread function.  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 img = cv2.imread('sampleImage.jpg')
-#+END_EXAMPLE
+\end{verbatim}
 the above line will read a image named `sampleImage.jpg` from the present working directory.  
 The image read is by default in BGR format , to read the image in gray scale replace the above  
 line with  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 img = cv2.imread('sampleImage.jpg',0)
-#+END_EXAMPLE
+\end{verbatim}
 The image read is a numpy array. Thus you can create you own image by creating an numpy array  
 with a element with 8 bit representation  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 img = np.ones((300,400,3),dtype = np.uint8)*255
-#+END_EXAMPLE
+\end{verbatim}
 the above line will create a 3 channel image with height 300 and 400 pixels fill all pixel values  
 to (255,255,255), meaning the image will be a white image.  
-** Displaying images
+\subsection*{Displaying images}
+\label{sec-7-3}
 
 To display an image cv2 provides a function called `imshow`  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 cv2.imshow('window_name',img)
-#+END_EXAMPLE
+\end{verbatim}
 If you run your code now your program might probably collapse and the window  
 will stop responding. This is because once the imshow fuction is called the program  
 will create a thread (child thread) to display the image but as soon as the child thread  
@@ -201,18 +242,18 @@ is created the parent process terminates leaving the child thread in orphan stat
 Thus the window will not repond to any clicks. So to avoid it always use the imshow function  
 with a function called `waitKey()` to make the parent process to wait till the child terminates  
 and close all the windows before you exit the program.  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 cv2.imshow('window_name',img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-#+END_EXAMPLE
-**NOTE:** `cv2.waitKey(0)` will make the program to halt and wait until a keyboard stroke  
+\end{verbatim}
+\textbf{\textbf{NOTE:}} `cv2.waitKey(0)` will make the program to halt and wait until a keyboard stroke  
 is recieved. In case of video where the frame are continuously read, waiting for key board stroke will  
 not be a efficient job to do, so we we give waitKey(1) where the program don't halt but continue executing  
 and scans for keyboard stroke in interval of 1 sec.  
 \newpage
 So a Simple program will look like  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 import cv2
 import numpy as np
 
@@ -221,10 +262,10 @@ img = cv2.imread('sampleImage.jpg')
 cv2.imshow('Image',img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-#+END_EXAMPLE
+\end{verbatim}
 
 So to display a live video use this program  
-#+BEGIN_EXAMPLE
+\begin{verbatim}
 import cv2
 import numpy as np
 
@@ -236,9 +277,11 @@ while True:
       break
 cap.release()
 cv2.destroyAllWindows()
-#+END_EXAMPLE
-#+CAPTION: Output
-#+NAME:   fig1
-#+attr_html: :width 250px
-#+attr_latex: :width 250px
-[[./videoDemo2.png]]
+\end{verbatim}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=250px]{./videoDemo2.png}
+\caption{\label{fig1}Output}
+\end{figure}
+% Emacs 25.2.2 (Org mode 8.2.10)
+\end{document}
