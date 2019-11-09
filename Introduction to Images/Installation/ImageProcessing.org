@@ -110,6 +110,8 @@ I would recommend to install all these tools because some of the libraries are e
 installed using each of these tools.  
 
 ** Dependency packages
+You can download this \hyperlink{bashscrip}{any sentence} that contains all commands for the installation.
+You can directly execute this file after changing the permissions of the file.
 The program requires the following packages for execution  
 #+BEGIN_EXAMPLE
 opencv
@@ -146,7 +148,10 @@ $ conda install -c conda-forge theano
 $ conda install -c conda-forge tensorflow 
 $ conda install -c conda-forge keras
 $ conda install -c anaconda pillow
+$ python3 -m pip install ipykernel
+$ python3 -m ipykernel install --user
 #+END_EXAMPLE
+
 
 **Note:** If you are willing to install the tensorflow and keras for GPU, do it  
 only if you have good Graphical processing unit in you machine, because it is  
